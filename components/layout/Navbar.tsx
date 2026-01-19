@@ -4,22 +4,30 @@ import {useEffect, useRef, useState} from "react";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {FiMenu, FiX, FiHome, FiInfo, FiCalendar} from "react-icons/fi";
-import { FaAngleDown } from "react-icons/fa6";
 import engFlag from "../../public/hero/eng-flag.svg"
 import hunFlag from "../../public/hero/hun-flag.svg"
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import {Drawer} from "@/components/ui/drawer";
+import Image from "next/image";
+
 
 export default function Navbar() {
     const pathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
-    const navRef = useRef(null); // <-- ref for nav
+    const navRef = useRef(null);
     const [lang, setLang] = useState("ENG");
 
-    const isHome = pathname === "/";
-    const isCars = pathname.startsWith("/cars");
-    const isAbout = pathname === "/about";
-    const isReserve = pathname === "/reserve";
+    const isCurrentPageHome = pathname === "/";
+    const isCurrentPageCars = pathname.startsWith("/cars");
+    const isCurrentPageAbout = pathname === "/about";
+    const isCurrentPageReserve = pathname === "/reserve";
 
     useEffect(() => {
         function handleClickOutside(e) {
@@ -31,6 +39,10 @@ export default function Navbar() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        console.log(lang)
+    }, [lang]);
 
     const menuVariants = {
         closed: {
@@ -71,17 +83,17 @@ export default function Navbar() {
     return (
         <nav
             ref={navRef}
-            className={`p-4 text-white flex items-center relative w-full overflow-hidden ${mobileOpen ? "grid grid-cols-2 grid-rows-[auto_1fr]" : ""}`}>
+            className={`p-4 text-white flex items-center relative w-full overflow-hidden flex-wrap ${mobileOpen ? "" : ""}`}>
 
             {/* Logo */}
-            <Link className="text-5xl font-italy hover:cursor-pointer flex-shrink-0 md:self-start w-1/2 flex justify-start lg:flex-1" href="/">viprent</Link>
+            <Link className="text-5xl font-italy hover:cursor-pointer flex-shrink-0 md:self-start w-1/2 flex justify-start lg:flex-1 ml-10" href="/">viprent</Link>
 
             {/* Desktop Links */}
-            <div className="hidden lg:flex mx-auto gap-5 items-center lg:flex-3">
+            <div className="hidden lg:flex mx-auto gap-5 items-center lg:flex-2">
                 <Link
                     href="/"
-                    className={`px-5 py-1 rounded-md transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
-                        isHome ? "bg-accent" : "hover:text-accent"
+                    className={`px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
+                        isCurrentPageHome ? "bg-accent" : "hover:text-accent hover:bg-color-accent-light transition-colors duration-300"
                     }`}
                 >
                     Home
@@ -89,8 +101,8 @@ export default function Navbar() {
 
                 <Link
                     href="/cars"
-                    className={`px-5 py-1 rounded-md transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
-                        isCars ? "bg-accent" : "hover:text-accent"
+                    className={`px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
+                        isCurrentPageCars ? "bg-accent" : "hover:text-accent transition-colors duration-300"
                     }`}
                 >
                     Cars
@@ -98,8 +110,8 @@ export default function Navbar() {
 
                 <Link
                     href="/about"
-                    className={`px-5 py-2 rounded-md transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
-                        isAbout ? "bg-accent" : "hover:text-accent"
+                    className={`px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
+                        isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
                     }`}
                 >
                     About us
@@ -107,17 +119,38 @@ export default function Navbar() {
 
                 <Link
                     href="/reserve"
-                    className={`px-5 py-2 rounded-md text-secondary hover:text-accent transition-colors duration-200 hover:cursor-pointer`}
+                    className={`px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
+                        isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
+                    }`}
                 >
                     Reserve
                 </Link>
 
 
-                <div className="rounded-md bg-secondary grid grid-cols-[1fr_2fr_1fr] w-28 h-10  hover:cursor-pointer">
-                    <img src={lang === "ENG" ? engFlag : hunFlag} alt="" className="max-w-8" />
-                    <p className="text-center text-primary">ENG</p>
-                    <FaAngleDown />
-                </div>
+                <Select value={lang} onValueChange={setLang}>
+                    <SelectTrigger className="w-[130px] border-[0.1] cursor-pointer relative flex items-center">
+                        <Image
+                            src={hunFlag}
+                            alt=""
+                            width={26}
+                            height={26}
+                            className={`${lang === 'HUN' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
+                        />
+                        <Image
+                            src={engFlag}
+                            alt=""
+                            width={26}
+                            height={26}
+                            className={`${lang === 'ENG' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 absolute left-3`}
+                        />
+                        <SelectValue placeholder={lang} className="text-secondary ml-2"/>
+                    </SelectTrigger>
+
+                    <SelectContent className="cursor-pointer">
+                        <SelectItem value="ENG" onSelect={() => setLang("ENG")}>ENG</SelectItem>
+                        <SelectItem value="HUN" onSelect={() => setLang("HUN")}>HUN</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
 
             {/* Open, Close Button */}
@@ -134,7 +167,7 @@ export default function Navbar() {
                 {mobileOpen && (
                     <motion.div
                         key="mobile-menu"
-                        className="lg:hidden relative left-0 z-50 overflow-hidden"
+                        className="lg:hidden relative left-0 z-50 overflow-hidden w-full max-h-80 sm:max-h-90 sm:ml-15 ml-5 pt-3 transition-transform duration-300"
                         initial="closed"
                         animate="open"
                         exit="closed"
@@ -143,10 +176,10 @@ export default function Navbar() {
                         <Drawer open={mobileOpen} onOpenChange={setMobileOpen} side="left">
                             <div className="flex flex-col justify-center h-full text-white gap-6 pl-5 top-0">
                                 {[
-                                    { href: "/", icon: <FiHome />, label: "Home" },
-                                    { href: "/cars", icon: <FiHome />, label: "Cars" },
-                                    { href: "/about", icon: <FiInfo />, label: "About us" },
-                                    { href: "/reserve", icon: <FiCalendar />, label: "Reserve" },
+                                    { href: "/", icon: <FiHome />, label: "Home", isActive: isCurrentPageHome },
+                                    { href: "/cars", icon: <FiHome />, label: "Cars", isActive: isCurrentPageCars },
+                                    { href: "/about", icon: <FiInfo />, label: "About us", isActive: isCurrentPageAbout },
+                                    { href: "/reserve", icon: <FiCalendar />, label: "Reserve", isActive: isCurrentPageReserve },
                                 ].map((item) => (
                                     <motion.div
                                         key={item.href}
@@ -157,13 +190,41 @@ export default function Navbar() {
                                             onClick={() => setTimeout(() => {
                                                 setMobileOpen(false);
                                             }, 3000)}
-                                            className="flex items-center gap-4 font-lato hover:text-accent text-nowrap"
+                                            className={`flex items-center gap-4 font-lato  text-nowrap ${item.isActive ? "text-accent" : "text-white" }`}
                                         >
                                             {item.icon}
                                             {item.label}
                                         </Link>
                                     </motion.div>
                                 ))}
+                                <motion.div
+                                    variants={itemVariants}
+                                >
+                                <Select value={lang} onValueChange={setLang}>
+                                    <SelectTrigger className="w-[130px] border-[0.1] cursor-pointer relative flex items-center">
+                                        <Image
+                                            src={hunFlag}
+                                            alt=""
+                                            width={26}
+                                            height={26}
+                                            className={`${lang === 'HUN' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
+                                        />
+                                        <Image
+                                            src={engFlag}
+                                            alt=""
+                                            width={26}
+                                            height={26}
+                                            className={`${lang === 'ENG' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 absolute left-3`}
+                                        />
+                                        <SelectValue placeholder={lang} className="text-secondary ml-2"/>
+                                    </SelectTrigger>
+
+                                    <SelectContent className="cursor-pointer">
+                                        <SelectItem value="ENG" onSelect={() => setLang("ENG")}>ENG</SelectItem>
+                                        <SelectItem value="HUN" onSelect={() => setLang("HUN")}>HUN</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                </motion.div>
                             </div>
                         </Drawer>
                     </motion.div>
