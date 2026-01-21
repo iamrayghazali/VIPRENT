@@ -1,29 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Italianno, Lato, Fira_Sans } from "next/font/google";
+import {Italianno, Lato, Fira_Sans, Iceland} from "next/font/google";
 import "./globals.css";
 
-const italy = Italianno({
-    subsets: ["latin"],
-    weight: ["400"],
-    variable: "--font-italy",
-})
-
-const lato = Lato({
-    subsets: ["latin"],
-    weight: ["400", "700"],
-    variable: "--font-lato",
-})
-
-const fira = Fira_Sans({
-    subsets: ["latin"],
-    weight: ["400", "500", "700"],
-    variable: "--font-fira",
-})
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const fira = Fira_Sans({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-fira' });
+const iceland = Iceland({ weight: '400', subsets: ['latin'], variable: '--font-iceland' });
+const italy = Italianno({ weight: '400', subsets: ['latin'], variable: '--font-italy' });
+const lato = Lato({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-lato' });
 
 export const metadata: Metadata = {
   title: "Viprent",
@@ -36,9 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable}  ${lato.variable} ${fira.variable} ${italy.variable} antialiased`}
+    <html lang="en" className={`${fira.variable} ${iceland.variable} ${italy.variable} ${lato.variable}`}>
+      <body className="overflow-x-hidden"
       >
         {children}
       </body>
