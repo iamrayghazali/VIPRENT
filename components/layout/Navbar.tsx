@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import {motion, AnimatePresence} from "framer-motion";
 import {useEffect, useRef, useState} from "react";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function Navbar() {
     const isCurrentPageReserve = pathname === "/reserve";
 
     useEffect(() => {
-        function handleClickOutside(e) {
+        function handleClickOutside(e: { target: any; }) {
             if (navRef.current && !navRef.current.contains(e.target)) {
                 setMobileOpen(false);
             }
@@ -40,9 +40,6 @@ export default function Navbar() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    useEffect(() => {
-        console.log(lang)
-    }, [lang]);
 
     const menuVariants = {
         closed: {
@@ -81,19 +78,26 @@ export default function Navbar() {
     };
 
     return (
-        <nav
+        <motion.nav
             ref={navRef}
-            className={`p-4 text-white flex items-center relative w-full overflow-hidden flex-wrap ${mobileOpen ? "" : ""}`}>
-
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+                duration: 0.2,
+                ease: "easeOut",
+            }}
+            className={`absolute top-0 left-0 z-50 w-full flex items-center flex-wrap transition-all duration-300 ease-out text-white pt-4 ${mobileOpen ? "bg-black/60 backdrop-blur-md shadow-lg" : ""}`}>
             {/* Logo */}
-            <Link className="text-5xl font-italy hover:cursor-pointer flex-shrink-0 md:self-start w-1/2 flex justify-start lg:flex-1 ml-10" href="/">viprent</Link>
+            <Link
+                className="text-5xl font-italy hover:cursor-pointer flex-shrink-0 md:self-start w-1/2 flex justify-start lg:flex-1 ml-10"
+                href="/">viprent</Link>
 
             {/* Desktop Links */}
             <div className="hidden lg:flex mx-auto gap-5 items-center lg:flex-2">
                 <Link
                     href="/"
-                    className={`px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
-                        isCurrentPageHome ? "bg-accent" : "hover:text-accent hover:bg-color-accent-light transition-colors duration-300"
+                    className={`font-light px-5 py-1 rounded-xl hover:cursor-pointer transition-all duration-300 active:scale-95 active:translate-y-[1px] ${
+                        isCurrentPageHome ? "bg-accent hover:bg-red-dark" : "hover:text-accent hover:bg-color-accent-light"
                     }`}
                 >
                     Home
@@ -101,7 +105,7 @@ export default function Navbar() {
 
                 <Link
                     href="/cars"
-                    className={`px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
+                    className={`font-light px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
                         isCurrentPageCars ? "bg-accent" : "hover:text-accent transition-colors duration-300"
                     }`}
                 >
@@ -110,7 +114,7 @@ export default function Navbar() {
 
                 <Link
                     href="/about"
-                    className={`px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
+                    className={`font-light px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
                         isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
                     }`}
                 >
@@ -119,7 +123,7 @@ export default function Navbar() {
 
                 <Link
                     href="/reserve"
-                    className={`px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
+                    className={`font-light px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
                         isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
                     }`}
                 >
@@ -156,8 +160,9 @@ export default function Navbar() {
             {/* Open, Close Button */}
             <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden ml-auto flex-shrink-0 flex justify-end text-white text-3xl p-2 focus:outline-none transition-transform duration-300">
-                   <span className={`block transition-transform duration-300 ${mobileOpen ? "rotate-90 scale-110" : ""}`}>
+                className="lg:hidden ml-auto flex-shrink-0 flex justify-end text-white text-3xl p-2 pr-10 focus:outline-none transition-transform duration-300">
+                   <span
+                       className={`block transition-transform duration-300 ${mobileOpen ? "rotate-90 scale-110" : ""}`}>
                        {mobileOpen ? <FiX/> : <FiMenu/>}
                    </span>
             </button>
@@ -167,7 +172,7 @@ export default function Navbar() {
                 {mobileOpen && (
                     <motion.div
                         key="mobile-menu"
-                        className="lg:hidden relative left-0 z-50 overflow-hidden w-full max-h-80 sm:max-h-90 sm:ml-15 ml-5 pt-3 transition-transform duration-300"
+                        className="lg:hidden relative left-0 z-50 overflow-hidden w-full max-h-80 sm:max-h-90 sm:pl-15 pl-5 pt-3 transition-transform duration-300 "
                         initial="closed"
                         animate="open"
                         exit="closed"
@@ -176,10 +181,15 @@ export default function Navbar() {
                         <Drawer open={mobileOpen} onOpenChange={setMobileOpen} side="left">
                             <div className="flex flex-col justify-center h-full text-white gap-6 pl-5 top-0">
                                 {[
-                                    { href: "/", icon: <FiHome />, label: "Home", isActive: isCurrentPageHome },
-                                    { href: "/cars", icon: <FiHome />, label: "Cars", isActive: isCurrentPageCars },
-                                    { href: "/about", icon: <FiInfo />, label: "About us", isActive: isCurrentPageAbout },
-                                    { href: "/reserve", icon: <FiCalendar />, label: "Reserve", isActive: isCurrentPageReserve },
+                                    {href: "/", icon: <FiHome/>, label: "Home", isActive: isCurrentPageHome},
+                                    {href: "/cars", icon: <FiHome/>, label: "Cars", isActive: isCurrentPageCars},
+                                    {href: "/about", icon: <FiInfo/>, label: "About us", isActive: isCurrentPageAbout},
+                                    {
+                                        href: "/reserve",
+                                        icon: <FiCalendar/>,
+                                        label: "Reserve",
+                                        isActive: isCurrentPageReserve
+                                    },
                                 ].map((item) => (
                                     <motion.div
                                         key={item.href}
@@ -190,46 +200,49 @@ export default function Navbar() {
                                             onClick={() => setTimeout(() => {
                                                 setMobileOpen(false);
                                             }, 3000)}
-                                            className={`flex items-center gap-4 font-lato  text-nowrap ${item.isActive ? "text-accent" : "text-white" }`}
+                                            className={`flex items-center gap-4 font-lato text-nowrap ${item.isActive ? "text-accent" : "text-white"}`}
                                         >
                                             {item.icon}
-                                            {item.label}
+                                            <p>
+                                                {item.label}
+                                            </p>
                                         </Link>
                                     </motion.div>
                                 ))}
                                 <motion.div
                                     variants={itemVariants}
                                 >
-                                <Select value={lang} onValueChange={setLang}>
-                                    <SelectTrigger className="w-[130px] border-[0.1] cursor-pointer relative flex items-center">
-                                        <Image
-                                            src={hunFlag}
-                                            alt=""
-                                            width={26}
-                                            height={26}
-                                            className={`${lang === 'HUN' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
-                                        />
-                                        <Image
-                                            src={engFlag}
-                                            alt=""
-                                            width={26}
-                                            height={26}
-                                            className={`${lang === 'ENG' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 absolute left-3`}
-                                        />
-                                        <SelectValue placeholder={lang} className="text-secondary ml-2"/>
-                                    </SelectTrigger>
+                                    <Select value={lang} onValueChange={setLang}>
+                                        <SelectTrigger
+                                            className="w-[130px] border-[0.1] cursor-pointer relative flex items-center">
+                                            <Image
+                                                src={hunFlag}
+                                                alt=""
+                                                width={26}
+                                                height={26}
+                                                className={`${lang === 'HUN' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
+                                            />
+                                            <Image
+                                                src={engFlag}
+                                                alt=""
+                                                width={26}
+                                                height={26}
+                                                className={`${lang === 'ENG' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 absolute left-3`}
+                                            />
+                                            <SelectValue placeholder={lang} className="text-secondary ml-2"/>
+                                        </SelectTrigger>
 
-                                    <SelectContent className="cursor-pointer">
-                                        <SelectItem value="ENG" onSelect={() => setLang("ENG")}>ENG</SelectItem>
-                                        <SelectItem value="HUN" onSelect={() => setLang("HUN")}>HUN</SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                        <SelectContent className="cursor-pointer">
+                                            <SelectItem value="ENG" onSelect={() => setLang("ENG")}>ENG</SelectItem>
+                                            <SelectItem value="HUN" onSelect={() => setLang("HUN")}>HUN</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                 </motion.div>
                             </div>
                         </Drawer>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </motion.nav>
     );
 }
