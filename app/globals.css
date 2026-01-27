@@ -16,12 +16,7 @@ body {
             opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
             transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.your-navbar {
-    background: rgba(0,0,0,0.1); /* glass */
-    backdrop-filter: blur(10px);
-    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-}
+
 @theme {
     --font-fira: var(--font-fira), sans-serif;
     --font-iceland: var(--font-iceland), system-ui;
@@ -36,8 +31,34 @@ body {
     --color-red-dark: #780000;
 }
 
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 40s linear infinite;
+}
+
+.animate-scroll-fast {
+    animation: scroll 20s linear infinite;
+}
+
+.animate-scroll-slow {
+    animation: scroll 80s linear infinite;
+}
+
+.hover-paused:hover {
+    animation-play-state: paused;
+}
+
+
 :root {
-    --color-primary: #ff0000;
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.13 0.028 261.692);
