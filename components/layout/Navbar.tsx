@@ -86,7 +86,7 @@ export default function Navbar() {
                 duration: 0.2,
                 ease: "easeOut",
             }}
-            className={`absolute top-0 left-0 z-50 w-full flex items-center flex-wrap transition-all duration-300 ease-out text-white pt-4 ${mobileOpen ? "bg-black/60 backdrop-blur-md shadow-lg" : ""}`}>
+            className={`max-w-[1440px] absolute top-0 left-1/2 -translate-x-1/2 z-50 w-full flex items-center flex-wrap transition-all duration-300 ease-out text-white pt-4 ${mobileOpen ? "bg-black/60 backdrop-blur-md shadow-lg" : ""}`}>
             {/* Logo */}
             <Link
                 className="text-5xl font-italy hover:cursor-pointer flex-shrink-0 md:self-start w-1/2 flex justify-start lg:flex-1 ml-10"
