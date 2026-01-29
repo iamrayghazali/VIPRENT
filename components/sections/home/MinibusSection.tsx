@@ -104,9 +104,6 @@ export default function MinibusSection() {
                                 <Button type="primary" path={MINIBUS_PATH}>
                                     Reserve
                                 </Button>
-                                <Button type="secondary" path={MINIBUS_PATH }>
-                                    Reserve
-                                </Button>
                             </div>
                         </div>
 
