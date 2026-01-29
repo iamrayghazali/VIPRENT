@@ -14,8 +14,8 @@ export default function WobbleCardSection() {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full p-5">
                     <WobbleCard
-                        containerClassName="col-span-1 order-1 lg:col-span-2 min-h-[400px] lg:min-h-[300px] relative"
-                        className=" grid grid-cols-1 md:grid-cols-2 hover:cursor-pointer"
+                        containerClassName="col-span-1 order-1 lg:col-span-2 min-h-[400px] lg:min-h-[300px] relative  hover:cursor-pointer"
+                        className=" grid grid-cols-1 md:grid-cols-2"
                         href={CAR1PATH}
                     >
                         {/* Background image layer */}
@@ -31,14 +31,14 @@ export default function WobbleCardSection() {
 
                         {/* Content */}
                         <div className="relative z-10  flex flex-col justify-end h-full">
-                            <span className="text-accent text-sm font-extrabold mb-2">
+                            <span className="text-accent text-sm font-extrabold">
                               EXCLUSIVE
                             </span>
                             <h2 className="text-3xl lg:text-4xl font-lato font-extrabold text-white text-nowrap">
                                 Ford Mustang GT-5.0
                             </h2>
 
-                            <p className="mt-2 text-sm text-neutral-200">
+                            <p className="mt-2 text-sm text-neutral-400">
                                 Convertable · V8 · Automatic
                             </p>
                         </div>
@@ -121,14 +121,14 @@ export default function WobbleCardSection() {
 
                         {/* Content */}
                         <div className="relative z-10  flex flex-col justify-end h-full">
-                            <span className="text-accent text-sm font-extrabold mb-2">
+                            <span className="text-accent text-sm font-extrabold">
                               EXCLUSIVE
                             </span>
                             <h2 className="text-3xl lg:text-4xl font-lato font-extrabold text-white text-nowrap">
                                 Ford Mustang GT-5
                             </h2>
 
-                            <p className="mt-2 text-sm text-neutral-200">
+                            <p className="mt-2 text-sm text-neutral-400">
                                 Sport · V8 · Automatic
                             </p>
                         </div>
