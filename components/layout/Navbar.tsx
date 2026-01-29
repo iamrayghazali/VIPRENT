@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select"
 import {Drawer} from "@/components/ui/drawer";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 
 export default function Navbar() {
@@ -94,41 +95,21 @@ export default function Navbar() {
 
             {/* Desktop Links */}
             <div className="hidden lg:flex mx-auto gap-5 items-center lg:flex-2">
-                <Link
-                    href="/"
-                    className={`font-light px-5 py-1 rounded-xl hover:cursor-pointer transition-all duration-300 active:scale-95 active:translate-y-[1px] ${
-                        isCurrentPageHome ? "bg-accent hover:bg-red-dark" : "hover:text-accent hover:bg-color-accent-light"
-                    }`}
-                >
-                    Home
-                </Link>
+                <Button type={isCurrentPageHome ? "primary" : "ghost"} path="/">
+                Home
+                </Button>
 
-                <Link
-                    href="/cars"
-                    className={`font-light px-5 py-1 rounded-xl transition-transform duration-200 active:scale-95 active:translate-y-[1px] hover:cursor-pointer ${
-                        isCurrentPageCars ? "bg-accent" : "hover:text-accent transition-colors duration-300"
-                    }`}
-                >
+                <Button type={isCurrentPageCars ? "primary" : "ghost"} path="/cars">
                     Cars
-                </Link>
+                </Button>
 
-                <Link
-                    href="/about"
-                    className={`font-light px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
-                        isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
-                    }`}
-                >
+                <Button type={isCurrentPageAbout ? "primary" : "ghost"} path="/about">
                     About us
-                </Link>
+                </Button>
 
-                <Link
-                    href="/reserve"
-                    className={`font-light px-5 py-2 rounded-xl transition-transform duration-200  active:scale-95 active:translate-y-[1px] hover:cursor-pointer text-nowrap ${
-                        isCurrentPageAbout ? "bg-accent" : "hover:text-accent transition-colors duration-300"
-                    }`}
-                >
+                <Button type={isCurrentPageReserve ? "primary" : "ghost"} path="/reserve">
                     Reserve
-                </Link>
+                </Button>
 
 
                 <Select value={lang} onValueChange={setLang}>
