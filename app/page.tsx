@@ -5,6 +5,8 @@ import {Separator} from "@/components/ui/separator";
 import {InfiniteMovingCards} from "@/components/ui/infinite-moving-cards";
 import InfiniteScrollSection from "@/components/sections/home/InfiniteScrollSection";
 import MinibusSection from "@/components/sections/home/MinibusSection";
+import Button from "@/components/ui/Button";
+import Footer from "@/components/layout/Footer";
 
 
 
@@ -20,7 +22,8 @@ export default function Home() {
             <WobbleCardSection />
             <InfiniteScrollSection />
             <MinibusSection />
-            <div className="min-h-screen"></div>
+
+            <Footer />
         </div>
     </main>
   );
