@@ -131,12 +131,6 @@ body {
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-      --color-primary: #ff0000;
-  }
-}
-
 
 @layer base {
   * {
