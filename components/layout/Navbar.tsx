@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select"
 import {Drawer} from "@/components/ui/drawer";
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+import CustomButton from "@/components/ui/CustomButton";
 
 
 export default function Navbar() {
@@ -95,21 +95,21 @@ export default function Navbar() {
 
             {/* Desktop Links */}
             <div className="hidden lg:flex mx-auto gap-5 items-center lg:flex-2">
-                <Button type={isCurrentPageHome ? "primary" : "ghost"} path="/">
+                <CustomButton type={isCurrentPageHome ? "primary" : "ghost"} path="/">
                 Home
-                </Button>
+                </CustomButton>
 
-                <Button type={isCurrentPageCars ? "primary" : "ghost"} path="/cars">
+                <CustomButton type={isCurrentPageCars ? "primary" : "ghost"} path="/cars">
                     Cars
-                </Button>
+                </CustomButton>
 
-                <Button type={isCurrentPageAbout ? "primary" : "ghost"} path="/about">
+                <CustomButton type={isCurrentPageAbout ? "primary" : "ghost"} path="/about">
                     About us
-                </Button>
+                </CustomButton>
 
-                <Button type={isCurrentPageReserve ? "primary" : "ghost"} path="/reserve">
+                <CustomButton type={isCurrentPageReserve ? "primary" : "ghost"} path="/reserve">
                     Reserve
-                </Button>
+                </CustomButton>
 
 
                 <Select value={lang} onValueChange={setLang}>
@@ -138,7 +138,7 @@ export default function Navbar() {
                 </Select>
             </div>
 
-            {/* Open, Close Button */}
+            {/* Open, Close CustomButton */}
             <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="lg:hidden ml-auto flex-shrink-0 flex justify-end text-white text-3xl p-2 pr-10 focus:outline-none transition-transform duration-300">
