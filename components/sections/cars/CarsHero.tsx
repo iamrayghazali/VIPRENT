@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CarsHero() {
     return (
-        <div className="relative w-full min-h-[80vh] md:min-h-screen overflow-hidden">
+        <div className="relative w-full min-h-[40vh] md:min-h-screen overflow-hidden">
             {/* Background image with fade-in */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -31,13 +31,10 @@ export default function CarsHero() {
             </div>
 
             {/* Text content */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center px-6 text-center">
-                <h1 className="text-2xl md:text-4xl font-bold text-white drop-shadow-lg">
+            <div className="absolute inset-0 flex md:justify-center items-end px-6 text-center md:pb-50 pb-20">
+                <h1 className="mt-4 max-w-2xl text-xl md:text-3xl text-accent drop-shadow-lg font-bold">
                     Choose from our wide selection of sports, luxury, and comfortable vehicles at affordable prices.
                 </h1>
-                <p className="mt-4 max-w-2xl text-sm md:text-lg text-white drop-shadow-md">
-                    Whatever your journey, we’ve got the perfect car for you.
-                </p>
             </div>
         </div>
     );

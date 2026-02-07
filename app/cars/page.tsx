@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CarsHero from "@/components/sections/cars/CarsHero";
 import FleetSection from "@/components/sections/cars/FleetSection";
+import FloatingCallButton from "@/components/ui/FloatingContactButton";
 
 
 
@@ -15,6 +16,8 @@ export default function Cars() {
         <main className="bg-black w-full flex flex-col items-center">
             <div className="flex flex-col max-w-[1440px] mx-auto w-full">
                 <Navbar />
+                <FloatingCallButton></FloatingCallButton>
+
                 <CarsHero />
                 <FleetSection />
                 <Footer />
