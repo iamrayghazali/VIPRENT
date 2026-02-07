@@ -17,7 +17,7 @@ export default function InfiniteScrollSection() {
         },
         {
             icon: <IoShieldOutline/>,
-            title: "COSTCO",
+            title: "CASCO",
             descr: "All our cars have COSTCO insurance.",
         },
         {
