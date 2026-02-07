@@ -1,17 +1,18 @@
 import {WobbleCard} from "@/components/ui/wobble-card";
 import {IoMdCheckmark} from "react-icons/io";
-import Button from "@/components/ui/Button";
+import CustomButton from "@/components/ui/CustomButton";
+import CarTag from "@/components/ui/CarTag";
 
 
 const MINIBUS_PATH = "/cars/mercedes-v-class-minibus";
-const CAR_TAGS = ["7 seats", "Automatic", "7 seats", "7 seats"]
+const CAR_TAGS = ["8 + 1 seats", "Luxury", "Diesel"]
 export default function MinibusSection() {
 
     return (
         <>
             <section className="bg-black max-w-[1080px] mx-auto mt-50">
                 <div className="flex flex-col text-white  mb-8">
-                    <h2 className=" text-3xl">Need More Space?</h2>
+                    <h2 className=" text-3xl ml-2">Need More Space?</h2>
                 </div>
                 <div className="grid md:grid-rows-2 grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto w-full p-5">
                     <WobbleCard
@@ -56,10 +57,7 @@ export default function MinibusSection() {
                         {/* TAGS */}
                         <ul className="text-white flex flex-wrap gap-2 h-fit">
                             {CAR_TAGS.map((tag, index) => (
-                                <li key={index}
-                                    className="text-sm border-1 border-gray-700 rounded-lg py-1 px-3 text-nowrap max-h-10">
-                                    {tag}
-                                </li>
+                                <CarTag key={index} text={tag} />
                             ))}
                         </ul>
                     </WobbleCard>
@@ -96,14 +94,14 @@ export default function MinibusSection() {
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <IoMdCheckmark className="text-green-600 text-xl shrink-0 mt-[2px]"/>
-                                    <span>COSTCO insurance</span>
+                                    <span>COSCO insurance</span>
                                 </li>
                             </ul>
 
                             <div className="mt-5 pt-6">
-                                <Button type="primary" path={MINIBUS_PATH}>
+                                <CustomButton type="primary" path={MINIBUS_PATH}>
                                     Reserve
-                                </Button>
+                                </CustomButton>
                             </div>
                         </div>
 
