@@ -48,7 +48,7 @@ export default function InfiniteScrollSection() {
 
     return (
         <>
-            <section className="flex flex-col lg:grid lg:grid-rows-2 mx-auto lg:mx-30 p-8 mt-50">
+            <section className="flex flex-col lg:grid lg:grid-rows-2 mx-auto lg:mx-30 p-8 mt-50 overflow-hidden">
                 <div className="justify-self-left">
                     <h6 className="text-md text-left lg:ml-25 md:ml-10 text-accent">
                         Included in the price of the car
