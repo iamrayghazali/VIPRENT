@@ -2,7 +2,7 @@ import Image from "next/image";
 import {FlipWords} from "@/components/ui/flip-words";
 import {TextHoverEffect} from "@/components/ui/text-hover-effect";
 import homeHeroCarBg from "../../../public/hero/home-hero-car-bg.svg"
-import BG from "../../../public/gallery/mercedes-gls-63-luxusauto-berles.jpg";
+import BG from "../../../public/gallery/mercedes-gls-63_3.jpg";
 
 export default function HomeHero() {
     return (
