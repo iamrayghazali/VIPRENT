@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import CustomButton from "@/components/ui/CustomButton";
 
 
 
@@ -33,9 +34,13 @@ export default function CarHero({ car }: {car: any}) {
                     {car.comment}
                 </p>
 
-                <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+                <h1 className="text-white text-4xl mb-80 md:text-6xl lg:text-7xl font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
                     {car.carName}
                 </h1>
+
+                <CustomButton path={"/reserve"} type="primary" className="w-fit">
+                    Reserve
+                </CustomButton>
 
             </motion.div>
 

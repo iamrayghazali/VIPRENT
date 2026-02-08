@@ -3,6 +3,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CarHero from "@/components/sections/car/CarHero";
 import FloatingCallButton from "@/components/ui/FloatingContactButton";
+import CarGallery from "@/components/sections/car/CarGallery";
+import CarDetails from "@/components/sections/car/CarDetails";
+import CarPrice from "@/components/sections/car/CarPrices";
 
 interface CarPageProps {
     params: { slug: string };
@@ -22,8 +25,10 @@ export default async function CarPage({ params }: CarPageProps) {
             <div className="flex flex-col max-w-[1440px] mx-auto w-full">
                 <Navbar />
                 <FloatingCallButton></FloatingCallButton>
-
                 <CarHero car={car} />
+                <CarDetails car={car}/>
+                <CarGallery car={car}/>
+                <CarPrice car={car} />
                 <Footer />
             </div>
         </main>
