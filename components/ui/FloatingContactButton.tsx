@@ -32,7 +32,7 @@ export default function FloatingContactButton() {
                 <button
                     className="fixed bottom-6 right-6 z-[9999] w-16 h-16 rounded-full bg-accent border border-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
                 >
-                    {iconToggle ? <Send className="w-6 h-6 text-white" /> : <Phone className="w-6 h-6 text-white" />}
+                    <Phone className="w-6 h-6 text-white" />
                 </button>
             </DialogTrigger>
 
