@@ -52,7 +52,7 @@ export default function WobbleCardSection() {
                         <div
                             className="absolute inset-0 bg-cover bg-center"
                             style={{
-                                backgroundImage: "url(/gallery/mustang-gt-interior.webp)",
+                                backgroundImage: "url(/gallery/mustang-gt-5_2.webp)",
                             }}
                         />
 
@@ -82,7 +82,7 @@ export default function WobbleCardSection() {
                         <div
                             className="absolute inset-0 bg-cover bg-center"
                             style={{
-                                backgroundImage: "url(/gallery/mercedes-gls-63-interior.jpg)",
+                                backgroundImage: "url(/gallery/mercedes-gls-63_2.jpg)",
                             }}
                         />
 
