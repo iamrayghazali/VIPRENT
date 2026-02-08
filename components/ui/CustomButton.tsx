@@ -22,7 +22,7 @@ export default function CustomButton({
             className={`${type === "secondary"
                 ? "hover:bg-white hover:text-black border border-white"
                 : type === "ghost" ? "transition-colors duration-300 bg-transparent hover:text-accent " : "bg-accent hover:bg-red-dark hover:border-red-dark border-accent border-2 "}
-                text-nowrap font-light text-white px-5 py-1.5 rounded-lg transition-all duration-300 hover:cursor-pointer active:scale-95 active:translate-y-[1px] disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-50
+                text-nowrap font-light text-white px-5 py-1.5 rounded-lg transition-all duration-300 hover:cursor-pointer active:scale-95 active:translate-y-[1px] disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-50 flex flex-row items-center p-5
                 ${className}`}>
             {children}
         </Link>
