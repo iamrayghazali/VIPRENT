@@ -98,7 +98,7 @@ export default function MinibusSection() {
                                 </li>
                             </ul>
 
-                            <div className="mt-5 pt-6">
+                            <div className="md:mt-5 pt-6 mx-auto mt-auto">
                                 <CustomButton type="primary" path={MINIBUS_PATH}>
                                     Reserve
                                 </CustomButton>

@@ -75,14 +75,14 @@ export const InfiniteMovingCards = ({
         <div
             ref={containerRef}
             className={cn(
-                "scroller relative z-20 max-w-4xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
+                "scroller relative z-20 max-w-4xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] ",
                 className,
             )}
         >
             <ul
                 ref={scrollerRef}
                 className={cn(
-                    "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4 animate-scroll",
+                    "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4 animate-scroll bg-primary",
                     pauseOnHover && "hover:[animation-play-state:paused]",
                 )}
             >

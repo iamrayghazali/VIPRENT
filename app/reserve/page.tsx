@@ -19,7 +19,8 @@ export default function Reserve() {
                 <FloatingCallButton></FloatingCallButton>
 
                 <div className="max-w-lg mx-auto mt-30">
-                    <div className="flex items-center justify-center">
+                    <h2 className="md:text-4xl text-2xl text-center text-white ">Get a personalised price</h2>
+                    <div className="flex items-center justify-center mt-20">
                         <div className="h-7 w-7 rounded-full bg-white text-center">
                             <span className="text-primary text-lg font-extrabold">1</span>
                         </div>
@@ -32,13 +33,20 @@ export default function Reserve() {
                             <span className="text-primary text-lg font-extrabold">3</span>
                         </div>
                     </div>
-                    <div className="flex justify-between rounded-full text-center mt-5">
+                    <div className="flex justify-around rounded-full text-center mt-5">
                         <span className="text-white">Choose car</span>
                         <span className="text-white">Select date</span>
                         <span className="text-white">Send</span>
                     </div>
                 </div>
-                <div className="md:w-lg w-md rounded-4xl border-2 border-tertiary h-50 mx-auto">
+                <div className="md:w-lg w-xs rounded-4xl border-2 border-tertiary h-50 mx-auto mt-30">
+                    {/* Name here */}
+                    {/* email */}
+                    {/* car selection */}
+                    {/* date picker 2x */}
+                    {/* need a driver checkbox */}
+                    {/* send button */}
+                    {/* message */}
 
                     {/*checkbox*/}
                 </div>

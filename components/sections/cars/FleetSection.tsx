@@ -126,6 +126,9 @@ export default function FleetSection() {
                                   ${transmissionFilter === "manual"
                                            ? "border-white"
                                            : "border border-accent-dark"}
+                                           ${transmissionFilter === "all"
+                                           ? "border-gray-300"
+                                           : "border border-accent-dark"}
                                   text-center hover:cursor-pointer`}>
                                         Manual
                                     </p>
@@ -135,6 +138,9 @@ export default function FleetSection() {
                               bg-black text-white select-none border-2
                                 ${transmissionFilter === "automatic"
                                            ? "border-white"
+                                           : "border border-accent-dark"}
+                                           ${transmissionFilter === "all"
+                                           ? "border-gray-300"
                                            : "border border-accent-dark"}
                                 text-center hover:cursor-pointer`}>
                                         Automatic

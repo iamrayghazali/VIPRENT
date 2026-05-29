@@ -14,7 +14,7 @@ export const metadata = {
 export default function Cars() {
     return (
         <main className="bg-black w-full flex flex-col items-center">
-            <div className="flex flex-col max-w-[1440px] mx-auto w-full">
+            <div className="flex flex-col max-w-[1440px] mx-auto w-full bg-[image:var(--bg-curve-lines)]">
                 <Navbar />
                 <FloatingCallButton></FloatingCallButton>
 

@@ -9,7 +9,7 @@ export default function Fleet({activeFilters}) {
             {CARS.map((item, index) => (
                 <CarCard key={index} carName={item.carName} imagePath={item.imagePath} comment={item.comment}
                          price30days={item.price30days} features={item.features} tags={item.tags}
-                         slug={item.slug}/>
+                         slug={item.slug} isDiscounted={item.isDiscounted} discountedPrice30days={item.discountedPrice30days} />
             ))}
         </div>
     )

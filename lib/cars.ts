@@ -13,7 +13,7 @@ import fordMustangGt_3 from "@/public/gallery/mustang-gt-5_3.webp";
 import fordMustangGt_5 from "@/public/gallery/mustang-gt-5_5.webp";
 
 
-/* 2 */
+/* 3 */
 import mercedesCLE from "@/public/gallery/mercedes-cle.webp";
 import mercedesCLE_2 from "@/public/gallery/mercedes-cle_2.webp";
 import mercedesCLE_3 from "@/public/gallery/mercedes-cle_3.webp";
@@ -25,7 +25,7 @@ import mercedesCLE_8 from "@/public/gallery/mercedes-cle_8.webp";
 import mercedesCLE_9 from "@/public/gallery/mercedes-cle_9.webp";
 
 
-/* 2 */
+/* 4 */
 import teslaModelX from "@/public/gallery/tesla-model-x.webp";
 import teslaModelX_2 from "@/public/gallery/tesla-model-x_2.webp";
 import teslaModelX_3 from "@/public/gallery/tesla-model-x_3.webp";
@@ -42,11 +42,13 @@ const CARS = [
         imagePath: mercedesGLS63,
         slug: "mercedes-gls-63",
         comment: "Full Extra",
-        price30days: 1499000,
+        price30days: 1999000,
         price3days: 50000,
         price7days: 150000,
         deposit: 350000,
         validLicenceInYears: 8,
+        isDiscounted: true,
+        discountedPrice30days: 1499000,
         features: {
             transmission: "Automatic",
             releaseDate: "2023",
@@ -66,6 +68,8 @@ const CARS = [
         price7days: 150000,
         deposit: 350000,
         validLicenceInYears: 7,
+        isDiscounted: true,
+        discountedPrice30days: 1499000,
         features: {
             transmission: "Automatic",
             releaseDate: "2025",
@@ -80,11 +84,13 @@ const CARS = [
         imagePath: mercedesCLE,
         slug: "mercedes-cle-cabrio",
         comment: "Full Extra",
-        price30days: 499000,
+        price30days: 699000,
         price3days: 50000,
         price7days: 150000,
         deposit: 350000,
         validLicenceInYears: 5,
+        isDiscounted: true,
+        discountedPrice30days: 499000,
         features: {
             transmission: "Automatic",
             releaseDate: "2024",
@@ -104,6 +110,8 @@ const CARS = [
         price7days: 150000,
         deposit: 350000,
         validLicenceInYears: 4,
+        isDiscounted: false,
+        discountedPrice30days: 0,
         features: {
             transmission: "Automatic",
             releaseDate: "2025",

@@ -8,11 +8,13 @@ export const WobbleCard = ({
                                containerClassName,
                                className,
                                 href,
+                                size = "large",
                            }: {
     children: React.ReactNode;
     containerClassName?: string;
     className?: string;
     href?: string;
+    size?: "large" | "small" | "medium";
 }) => {
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
     const [isHovering, setIsHovering] = useState(false);
@@ -46,7 +48,7 @@ export const WobbleCard = ({
                 )}
             >
                 <div
-                    className="relative  h-full [background-image:radial-gradient(88%_100%_at_top,rgba(207,27,43,0.55),rgba(0,0,0,1))]  sm:mx-0 sm:rounded-2xl overflow-hidden"
+                    className="relative h-full [background-image:radial-gradient(88%_100%_at_top,rgba(207,27,43,0.55),rgba(0,0,0,1))]  sm:mx-0 sm:rounded-2xl overflow-hidden"
                     style={{
                         boxShadow:
                             "0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)",
@@ -59,7 +61,13 @@ export const WobbleCard = ({
                                 : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
                             transition: "transform 0.1s ease-out",
                         }}
-                        className={cn("h-full px-4 py-8 sm:px-10", className)}
+                        className={cn(
+                            size === "large" && "h-90",
+                            size === "medium" && "h-80",
+                            size === "small" && "h-70",
+                            "px-4 py-8 sm:px-10",
+                            className
+                        )}
                     >
                         {children}
                     </motion.div>

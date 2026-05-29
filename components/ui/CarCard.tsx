@@ -21,9 +21,11 @@ type CarCardProps = {
     features: Features;
     tags: string[];
     slug: string;
+    isDiscounted: boolean;
+    discountedPrice30days: number;
 };
 
-export default function CarCard({ carName, imagePath, comment, price30days, features, tags, slug}: CarCardProps) {
+export default function CarCard({ carName, imagePath, comment, price30days, features, tags, slug, isDiscounted, discountedPrice30days}: CarCardProps) {
 
     function formatPrice(value:  number | bigint) {
         return new Intl.NumberFormat("hu-HU").format(value);
@@ -31,7 +33,12 @@ export default function CarCard({ carName, imagePath, comment, price30days, feat
 
     return (
         <>
-            <Card className="w-full max-w-sm min-w-xs bg-tertiary border-1 border-accent-dark flex flex-col">
+            <Card className="relative w-full max-w-sm min-w-xs bg-tertiary border-1 border-accent-dark flex flex-col hover:border-white">
+                {isDiscounted && (
+                    <div className="absolute top-3 left-3 z-10 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
+                        DISCOUNT
+                    </div>
+                )}
                 <Image src={imagePath} className="rounded-t-xl object-fill" alt="Car Image" />
                 <div className="flex flex-col p-2 flex-1">
                     {/* Content */}
@@ -44,7 +51,7 @@ export default function CarCard({ carName, imagePath, comment, price30days, feat
                         </h2>
 
 
-                                <ul className="flex flex-row flex-wrap text-neutral-400 gap-x-3 gap-y-2 px-2 mt-5">
+                                <ul className="flex flex-row flex-wrap text-neutral-400 gap-x-3 gap-y-2 px-2 mt-2">
                                     {tags.map((tag, index) => (
                                         <CarTag key={index} text={tag} />
                                     ))}
@@ -53,7 +60,7 @@ export default function CarCard({ carName, imagePath, comment, price30days, feat
                                 <div className="border-t border-neutral-800 mb-4 mt-4"/>
 
 
-                        <div className="grid grid-cols-3">
+                        <div className="grid grid-cols-3 justify-normal">
                             <div className="flex flex-col items-center justify-center">
                                 <FaGear className="text-xl text-neutral-400 mb-2"/>
                                 <p className="text-neutral-400 text-sm">
@@ -80,14 +87,30 @@ export default function CarCard({ carName, imagePath, comment, price30days, feat
                             <span className="text-white text-sm font-extrabold">
                                 30 days
                             </span>
-                            <div className="flex flex-row items-center ">
-                                <h2 className="text-2xl font-lato text-accent text-nowrap">
-                                    {formatPrice(price30days)} Ft
-                                </h2>
-                                <p className="text-neutral-400 text-thin text-lg ml-2">
-                                    + VAT
-                                </p>
-                            </div>
+                            {isDiscounted && discountedPrice30days ? (
+                                <>
+                                    <h2 className="text-lg font-lato text-neutral-200 text-nowrap line-through italic decoration-1">
+                                        {formatPrice(price30days)} Ft
+                                    </h2>
+                                    <div className="flex flex-row items-center ">
+                                                <h2 className="text-2xl font-lato text-accent text-nowrap">
+                                            {formatPrice(discountedPrice30days)} Ft
+                                        </h2>
+                                        <p className="text-neutral-400 text-thin text-lg ml-2">
+                                            + VAT
+                                        </p>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="flex flex-row items-center ">
+                                    <h2 className="text-2xl font-lato text-accent text-nowrap">
+                                        {formatPrice(price30days)} Ft
+                                    </h2>
+                                    <p className="text-neutral-400 text-thin text-lg ml-2">
+                                        + VAT
+                                    </p>
+                                </div>
+                                )}
                         </div>
 
                         <div className="flex items-center justify-center mt-auto gap-5">

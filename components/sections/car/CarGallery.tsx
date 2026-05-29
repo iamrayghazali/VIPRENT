@@ -7,8 +7,9 @@ import Image from "next/image"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {useEffect, useRef} from "react";
+import {cn} from "@/lib/utils";
 
-export default function CarGallery({ car }: { car: any }) {
+export default function CarGallery({ car, className }: { car: any, className?: string }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
@@ -33,10 +34,7 @@ export default function CarGallery({ car }: { car: any }) {
     }, [isOpen])
 
     return (
-        <div className="flex flex-col mx-auto w-full items-center mt-20">
-            <div className="flex flex-col text-white mb-8">
-                <h2 className="text-3xl">Gallery</h2>
-            </div>
+        <div className={cn("flex flex-col mx-auto w-full items-center overflow-hidden", className)}>
             {/* Standard Gallery */}
             <Carousel
                 setApi={setApi}
@@ -89,7 +87,7 @@ export default function CarGallery({ car }: { car: any }) {
                                 <CarouselItem key={index} className="flex items-center justify-center">
                                     <div className="relative w-full h-[80vh]">
                                         <Image
-                                            src={carImage}
+                                            src={car.carImage}
                                             alt={`${car.name} full view ${index + 1}`}
                                             fill
                                             className="object-contain"

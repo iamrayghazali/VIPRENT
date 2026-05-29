@@ -24,14 +24,13 @@ export default function About() {
             navigator.clipboard.writeText(address)
                 .then(() => {
                     console.log("Copied!")
-                    toast.success("Address copied!", { position: "bottom-right" })
+                    toast.success("Address copied!", { position: "top-right" })
                 })
                 .catch(() => {
-                    toast.error("Failed to copy address", { position: "bottom-right" })
+                    toast.error("Failed to copy address", { position: "top-right" })
                 })
         } else {
-            // Fallback for non-secure contexts (http) or very old browsers
-            toast.error("Clipboard not available", { position: "bottom-right" })
+                   toast.error("Clipboard not available", { position: "top-right" })
         }
     }
 
@@ -41,15 +40,15 @@ export default function About() {
                 <Navbar />
                 <FloatingCallButton></FloatingCallButton>
 
-                <div className="grid grid-cols-2 items-center mx-auto mt-50">
-                    <div className="flex flex-col justify-self-start items-start">
-                        <h2 className="text-2xl text-white">Find us</h2>
-                        <h2 className="text-lg text-white flex flex-row gap-2 items-center mt-5 hover:cursor-pointer" onClick={handleCopy}><IoLocationSharp/>Budapest, Rácz Aladár út 150, 1121</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center mx-auto mt-50">
+                    <div className="flex flex-col justify-self-start items-start pl-5 mb-15">
+                        <h2 className="text-2xl text-white font-extrabold">Find us</h2>
+                        <h2 className="text-lg text-white flex flex-row gap-2 items-center mt-5 hover:cursor-pointer" onClick={handleCopy}><IoLocationSharp className="" />Budapest, Rácz Aladár út 150, 1121</h2>
                         <Toaster />
 
-                        <div className="flex flex-row mt-10">
-                            <CustomButton path={"https://maps.apple.com/place?place-id=IF837CB1E68962FBD&address=1121+Budapest%2C+District+XII%2C+R%C3%A1cz+Alad%C3%A1r+utca+150.%2C+Hungary&coordinate=47.4863478%2C18.9886599&name=VIP+Rent&_provider=9902"} type="secondary"><FaMapMarkedAlt/> Apple Maps</CustomButton>
+                        <div className="flex flex-row mt-10 gap-3">
                             <CustomButton path={"https://www.google.com/maps?ll=47.486423,18.988759&z=15&t=m&hl=hu&gl=HU&mapclient=embed&cid=15391185408085169483"} type="secondary"> <SiGooglemaps/> Google Maps</CustomButton>
+                            <CustomButton path={"https://maps.apple.com/place?place-id=IF837CB1E68962FBD&address=1121+Budapest%2C+District+XII%2C+R%C3%A1cz+Alad%C3%A1r+utca+150.%2C+Hungary&coordinate=47.4863478%2C18.9886599&name=VIP+Rent&_provider=9902"} type="secondary"><FaMapMarkedAlt/> Apple Maps</CustomButton>
                         </div>
                     </div>
 
